@@ -1,0 +1,281 @@
+#container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  grid-template-rows: 64px auto 1fr;
+  background: #fafad2;
+  overflow: scroll;
+  z-index: 0;
+}
+
+H2 {
+  font-family: "Georgia", serif;
+  height: 28px;
+  margin: 0;
+  position: relative;
+  right:0;
+  padding-left: 10%;
+  padding-right: 10%;
+  align-self: stretch;
+}
+
+.back-button {
+  z-index: 5;
+  background-color: aliceblue;
+  width: 50px;
+  height: 50px;
+  border-style: solid;
+  border-radius: 100px;
+  font-size: 25px;
+}
+
+.sort-button {
+  z-index: 5;
+  background-color: aliceblue;
+  width: 50px;
+  height: 40px;
+  border-style: solid;
+  border-radius: 100px;
+  position: absolute;
+  grid-row: 1/span 1;
+  grid-column: 2/span 1;
+  top: 18px;
+  left:99%;
+  margin-left: -50px;
+}
+
+#sortArrow{
+  position: relative;
+  left: -10px;
+  top: -3px;
+  font-size: 30px;
+  pointer-events: none;
+}
+
+#sortText{
+  height: auto;
+  width:20px;
+  font-size: 15px;
+  position: relative;
+  left: 13px;
+  top: -35px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+#sortDate{
+  height: auto;
+  width: auto;
+  font-size: 11px;
+  position: relative;
+  left: 7px;
+  top: -35px;
+  font-family: "Trebuchet MS", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#date1{
+  position: relative;
+  top: 3px;
+  padding: 0;
+  margin:0;
+}
+
+#date2{
+  position: relative;
+  top:8px;
+  padding:0;
+  margin:0;
+}
+
+#button-div {
+  padding: 7px;
+}
+
+
+#lineList {
+  margin-left: 0;
+  grid-column: 1/span 2;
+  grid-row: 2/span 1;
+}
+
+#title {
+  z-index: 3;
+  text-align: center;
+  grid-row: 1/span all;
+  grid-column: 2/span 1;
+  margin: 0;
+  border-left: solid red;
+  border-width:3px;
+  padding-top: 13px;
+  padding-bottom: 0;
+  pointer-events: none;
+
+}
+
+#back{
+  position: absolute;
+  top: 0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: gray;
+  opacity: 50%;
+  z-index: 6;
+}
+
+#deleteText {
+  color: red;
+}
+
+#yes {
+  background: red;
+  color: white;
+}
+
+#priorityMessage {
+  margin-bottom: 20px;
+}
+
+#loadingScreen {
+  background: lightgoldenrodyellow;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  padding-top: 280px;
+  font-size: larger;
+  font-family: "Trebuchet MS", serif;
+}
+
+.sort-button-display{
+  height: 35px;
+}
+
+.line{
+  margin-left: -39px;
+  width: 100%;
+  padding-left: 39px;
+  background: lightgoldenrodyellow;
+  border-top: solid cornflowerblue;
+  border-width: 2px;
+}
+
+.textboxes {
+  border-style: none;
+  font-size: 18px;
+  width: 99%;
+  height: auto;
+  font-family: "Trebuchet MS", serif;
+}
+
+#textboxDiv {
+  position: relative;
+  height:20px;
+  width: auto;
+  padding-left: 80px;
+  margin: 0 0 0 0;
+  top: -10px;
+
+}
+
+#button-div2{
+  padding: 7px;
+}
+
+#line-button{
+  z-index: 5;
+  background-color: aliceblue;
+  border-style: solid;
+  border-radius: 100px;
+  font-size: 25px;
+}
+
+
+.inactiveText {
+  position: relative;
+  z-index: 100;
+  top: -10px;
+  width: auto;
+  pointer-events:none;
+  font-family: "Trebuchet MS", serif;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.activeText{
+  position: relative;
+  z-index: -10;
+  top: -100%;
+  left: 10%;
+  display: none;
+  color:lightgoldenrodyellow;
+  pointer-events:none;
+  font-style: italic;
+}
+
+#tempTapLine{
+  position: relative;
+  z-index: 100;
+  width:99%;
+  height:20px;
+  top:10px;
+  margin: 0;
+  padding: 0;
+  background: lightgoldenrodyellow;
+  border-width: 0;
+  font-family: "Trebuchet MS", serif;
+  font-size: 18px;
+}
+
+#tapLine{
+  grid-row: 3/span 1;
+  grid-column: 2/span all;
+  width:auto;
+  height:40px;
+  z-index: 102;
+  border-bottom: solid cornflowerblue;
+  border-width: 2px;
+  margin: 0;
+  padding: 0 0 0 80px;
+}
+
+#top {
+  position:relative;
+  grid-row: 1/span 1;
+  grid-column: 1/span all;
+  width:100%;
+  height:64px;
+  border-bottom: solid cornflowerblue;
+  display: flex;
+  flex-direction: column;
+  border-width: 2px;
+  z-index: 6;
+}
+
+.popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#bottom {
+  grid-row: 3/span 1;
+  grid-column: 1/span all;
+}
+
+#endList {
+  grid-row: 3/span 1;
+  grid-column: 1/span 2;
+  list-style: none;
+  z-index: 2;
+}
+
+#endList li {
+  height: 40px;
+  margin: 0;
+}
+
+.empty {
+  padding: 0;
+}

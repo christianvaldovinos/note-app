@@ -1,0 +1,82 @@
+.checkboxes {
+    padding-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 0;
+    margin: 0;
+    position: relative;
+    top: 12px;
+    z-index: 4;
+}
+
+.textboxes {
+    border-style: none;
+    font-size: 18px;
+    width: 99%;
+    height: auto;
+    font-family: "Trebuchet MS", serif;
+}
+
+#textboxDiv {
+    position: relative;
+    height:20px;
+    width: auto;
+    padding-left: 80px;
+    margin: 0 0 0 0;
+    top: -10px;
+}
+
+.select-button {
+    position: relative;
+    background-color: aliceblue;
+    width:15px;
+    height:15px;
+    top: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 19px;
+    border-style: solid;
+    padding: 1px;
+    font-size: x-small;
+    z-index: 4;
+}
+
+.selectButtonText {
+    position: relative;
+    top: -1px;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.checked {
+    text-decoration: line-through;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.selected {
+    background: lightblue;
+    z-index: 3;
+}
+
+.normal {
+    background: lightgoldenrodyellow;
+}
+
+li {
+    margin-left: -39px;
+    width: 100%;
+    padding-left: 39px;
+    background: lightgoldenrodyellow;
+    border-bottom: solid cornflowerblue;
+    border-width: 2px;
+}
+
+

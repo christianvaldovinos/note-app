@@ -1,0 +1,84 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+      function signedIn() {
+        return request.auth != null;
+    }
+
+    // check if we can view a certain note (viewers, editors, and owner)
+    function canView() {
+        return request.auth.token.email in resource.data.canView;
+    }
+
+    // check if we can edit a certain note (editors and owner)
+    function canEdit() {
+        return request.auth.token.email in resource.data.canEdit;
+    }
+
+		// makes sure the doc owner hasn't changed with this update
+    function updatedDocHasSameOwner() {
+      return resource.data.owner == request.resource.data.owner;
+    }
+
+    // checks that the created note is owned by current user
+    function checkNoteParametersCreate() {
+    		return request.auth.token.email == request.resource.data.owner;
+    }
+
+    // makes sure the note's key has not changed between updates
+    function checkNoteParametersUpdate() {
+    		return resource.data.key == request.resource.data.key;
+    }
+
+    // makes sure canEdit array has not changed. used for when any signed-in user can update canView (so viewers can remove themselves from a note without deleting it)
+    function canEditUnchanged() {
+    		return request.resource.data.canEdit == resource.data.canEdit;
+    }
+
+    // used on the update rule that lets viewers remove themselves from a note (to reduce possible note spam). we must check that they're only adjusting the canView field with their request
+    function canUpdateViewList() {
+    		return request.resource.data.diff(resource.data).affectedKeys().hasOnly(["canView"]);
+    }
+
+    // used on the update rule where we add to our document containing all registered emails. in this case, we ought to only update that emails field on that exact document without changing anything else
+    function canUpdateRegisteredUsers() {
+    		return request.resource.data.diff(resource.data).affectedKeys().hasOnly(["emails"]) && resource.data.key == 'b97qjRbVqp7TaMiZFdTQ' && resource.data.key == request.resource.data.key;
+    }
+
+    match /Lists/{list} {
+          allow read: if signedIn(); // we read everything and filter based on each note's canView list in our code. this lets us bring in a document containing all user emails to check that you're sharing with a valid user
+          allow create: if signedIn() && checkNoteParametersCreate();
+          allow update: if signedIn() && canView() && canUpdateViewList() && updatedDocHasSameOwner() && checkNoteParametersUpdate() && canEditUnchanged();
+          allow update: if signedIn() && canEdit() && updatedDocHasSameOwner();
+          allow update: if signedIn() && canUpdateRegisteredUsers();
+          allow delete: if signedIn() && canEdit();
+
+				// confirm that we're writing to a note that we can edit (check top level edit field)
+				function canEditNote() {
+        		return request.auth.token.email in get(/databases/$(database)/documents/Lists/$(list)).data.canEdit
+        }
+
+        // confirm we can view this note (checks canView which is up a level)
+        function canViewNote() {
+        		return request.auth.token.email in get(/databases/$(database)/documents/Lists/$(list)).data.canView
+        }
+
+        // confirms that all our line fields are default initialized properly
+        function checkLineParametersCreate() {
+            return request.resource.data.text is string && request.resource.data.key is string && request.resource.data.checked == false && request.resource.data.priority == 0 && request.resource.data.select_visible == true && request.resource.data.text_visible == true && request.resource.data.check_visible == true;
+        }
+
+        // makes sure that our priority values stay within the supported limits and the keys for each line don't change
+        function checkLineParametersUpdate() {
+        		return request.resource.data.priority <= 3 && request.resource.data.priority >= 0 && request.resource.data.key == resource.data.key;
+        }
+
+        match /Notes/{note} {
+          allow read: if signedIn() && canViewNote();
+          allow create: if signedIn() && canEditNote() && checkLineParametersCreate()
+          allow update: if signedIn() && canEditNote() && checkLineParametersUpdate();
+          allow delete: if signedIn() && canEditNote();
+            }
+    }
+  }
+  }

@@ -1,0 +1,40 @@
+.user {
+     background: none;
+     display: block;
+     border-color: aliceblue;
+     white-space: nowrap;
+}
+
+.shareList {
+     width: auto;
+     height: 60px;
+     overflow: auto;
+}
+
+.editPerm{
+     float: right;
+}
+
+.shareTitles {
+     color: blue;
+}
+
+#shareDiv {
+     display: flex;
+     flex-direction: row;
+}
+
+.sharedBoxes {
+     width: 50%;
+}
+.sharedBoxes2 {
+     width: 100%;
+}
+
+#removeButton{
+     float:left;
+}
+
+#invalidUser{
+     color: red;
+}

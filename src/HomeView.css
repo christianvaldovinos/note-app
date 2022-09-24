@@ -1,0 +1,151 @@
+#homepage {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 150px auto;
+    background: white;
+    overflow: scroll;
+}
+
+#titled {
+    position: relative;
+    width: 100vw;
+    background:lightsteelblue;
+    grid-row: 1/span 1;
+    border-color: black;
+    border-bottom-style: solid;
+}
+
+#cogwheel{
+    width: 30px;
+    height: 30px;
+}
+
+.header {
+    text-align: center;
+    position: relative;
+    top: -35px;
+    font-family: "Georgia", serif;
+    font-size: 80px;
+}
+
+#bottom-flex{
+    grid-row: 2/span 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#bottom-part {
+    width: 100%;
+    height: 100%;
+}
+
+#settings {
+    top: 20px;
+    left: 20px;
+    position: relative;
+    font-size: 45px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: aliceblue;
+    border-style: solid;
+    color: darkgray;
+}
+
+.circleButton{
+    background-color: aliceblue;
+    width: 50px;
+    height: 50px;
+    top: 99%;
+    left:99%;
+    border-style: solid;
+    border-radius: 100px;
+    font-size: 25px;
+    position: fixed;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index: 5;
+}
+
+
+#back{
+    position: absolute;
+    top: 0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: gray;
+    opacity: 50%;
+    z-index: 6;
+}
+
+#warning {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    z-index: 7;
+    background: aliceblue;
+    padding: 20px;
+    margin-top: -100px;
+    margin-left: -100px;
+    height: 200px;
+    width: 200px;
+    font-family: "Trebuchet MS", sans-serif;
+    border: solid gray;
+}
+
+#priorityMessage {
+    margin-bottom: 20px;
+}
+
+#warningButtons {
+    position: relative;
+    top: 30px;
+}
+
+.homeLoading {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    padding-top: 280px;
+    font-size: larger;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+.notebox {
+    margin-top: 20px;
+}
+
+.warningOption {
+    margin-bottom: 5px;
+    background: white;
+    border: 2px solid gray;
+    font-family: "Trebuchet MS", sans-serif;
+    cursor: default;
+    border-radius: 5px;
+    width: 170px;
+    font-size: 14px;
+}
+
+#logOut {
+    width: 100px;
+    height: 50px;
+    top: 10%;
+    left:90%;
+    font-size: 16px;
+    position: fixed;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index: 5;
+}
